@@ -4,25 +4,25 @@ import android.app.Activity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.contactapp.databinding.ContactDetailBinding
 
 class DetailActivity : AppCompatActivity() {
+
+    private lateinit var binding: ContactDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.contact_detail)
+        binding = ContactDetailBinding.inflate(layoutInflater)
+//        setContentView(R.layout.contact_detail)
+        setContentView(binding.root)
 
-//        try {
-//            val param1 = intent.getStringExtra("param1")?.toInt()
-//            val param2 = intent.getStringExtra("param2")?.toInt()
-//            val result = param1!! + param2!!
-//
-//            val textView = findViewById<TextView>(R.id.textView)
-//            textView.text = "Param1: $param1\nParam2: $param2\nResult: $result\n"
-//
-//            intent.putExtra("result", result)
-//
-//            setResult(Activity.RESULT_OK, intent)
-//        } catch (ex: Exception) {
-//            setResult(Activity.RESULT_CANCELED)
-//        }
+        val name = intent.getStringExtra("name")
+        val avt = intent.getStringExtra("avt")
+        val email = intent.getStringExtra("email")
+        val phone = intent.getStringExtra("phone")
+
+        binding.avtDetail.text = avt
+        binding.nameDetail.text = name
+        binding.emailDetail.text = email
+        binding.phoneDetail.text = phone
     }
 }
